@@ -1,0 +1,4 @@
+---
+applications:
+- name: HivePod-demo
+  command: node app/server.js

@@ -1,0 +1,140 @@
+<div class="row">
+	<div class="col-md-1"></div>
+	<div class="col-md-10">
+		<form class="form-inline text-left" name="editForm" keypress-enter="submit()" keypress-esc="cancel()">
+			<h3 ng-show="isEdition"  class="text-center" translate="label.class.edit.user"></h3>
+			<h3 ng-show="isCreation" class="text-center" translate="label.class.create.user"></h3>
+			<h3 ng-show="isDeletion" class="text-center" translate="label.class.delete.user"></h3>
+			<h3 ng-show="isView"     class="text-center" translate="label.class.singular.user"></h3>			
+			<fieldset ng-show="dataReceived">
+				<div class="row">
+					<div class="form-group col-md-4">
+						<label for="inputName">Name</label>
+						<div>
+							<input id="inputName" 
+								   name="inputName"
+								   type="text" 
+								   class="form-control" 
+								   placeholder="Name" 
+								   ng-model="obj.name" 
+								   ng-readonly="readOnly"
+								   required auto-focus />
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputLastname">Lastname</label>
+						<div>
+							<input id="inputLastname" 
+								   name="inputLastname"
+								   type="text" 
+								   class="form-control" 
+								   placeholder="Lastname" 
+								   ng-model="obj.lastname" 
+								   ng-readonly="readOnly"
+								   required />
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputAge">Age</label>
+						<div>
+							<input id="inputAge" 
+								   name="inputAge"
+								   type="number"
+								   step="1" 
+								   class="form-control" 
+								   placeholder="Age" 
+								   ng-model="obj.age" 
+								   ng-readonly="readOnly"
+								    />
+						</div>
+					</div>
+					<div class="form-group checkbox col-md-4">
+						<label for="inputIsActive" class="checkbox">
+							<input id="inputIsActive" 
+							       name="inputIsActive"
+								   type="checkbox" 
+								   ng-model="obj.isActive" 
+								   ng-readonly="readOnly"
+								   />
+							<span>IsActive</span>
+						</label>
+					</div>
+				</div>
+			</fieldset>
+			<br/>
+			<div ng-hide="obj.hideVisitedPlaces">
+				<table id="caption" class="table">
+					<tr>
+						<td class="text-left">
+							<h4>VisitedPlaces</h4>
+						</td>
+						<td class="text-right">
+							<a class="select-link iconBig" alt="{{'cmd.select' | translate}}" ng-show="!readOnly" ng-click="selectVisitedPlaces()" ><span tooltip="{{'cmd.select' | translate}}" class="glyphicon glyphicon-search"></span></a>
+							<a class="iconBig" alt="{{'cmd.add' | translate}}" ng-show="!readOnly && ui.createVisitedPlaces" ng-click="addVisitedPlaces()" ><span tooltip="{{'cmd.add' | translate}}" class="glyphicon glyphicon-plus"></span></a>
+						</td>
+					</tr>
+				</table>
+				<table id="itemList" class="table data-table table-hover table-striped table-condensed">
+					<thead>
+						<th ng-click="sortBy('name')" class="col-md-5">Name<sort-column ng-model="searchContext.sort.name"></sort-column></th>
+						<th ng-click="sortBy('description')" class="col-md-5">Description<sort-column ng-model="searchContext.sort.description"></sort-column></th>
+						<th ng-click="sortBy('location')" class="col-md-5">Location<sort-column ng-model="searchContext.sort.location"></sort-column></th>
+						<th ng-click="sortBy('picture')" class="col-md-5">Picture<sort-column ng-model="searchContext.sort.picture"></sort-column></th>
+						<th ng-show="!readOnly" class="col-md-1"></th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="place in obj.visitedPlaces">
+							<td class="data"><a ng-click="viewVisitedPlaces(place)">{{place.name}}</a></td>
+							<td class="data">{{place.description}}</td>
+							<td class="data">{{place.location | geopoint:3}}</td>
+							<td class="data"><a href="{{place.picture}}" ng-if="!(place.picture.toString().indexOf('/')==-1)"><img ng-src="{{place.picture}}" width="30"/></a></td>
+							<td>
+								<a href ng-show="!readOnly" ng-click="deleteVisitedPlaces(place)">
+									<span class="glyphicon glyphicon-link color-red" tooltip="{{'cmd.unlink' | translate}}"></span>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>			
+			<br/>
+			<div class="row">	
+				<error-zone ng-model="errors"></error-zone>
+			</div>
+
+			<div ng-hide="dataReceived" class="loader"><img src="images/loader.gif" alt="Loading..." /></div>
+			<div ng-show="uiWorking" class="loader"><img src="images/loader.gif" alt="Working..." /></div>
+
+			<div class="row acc-buttons">
+				<button type="button" ng-show="isView" class="btn btn-default" ng-click="cancel($event)">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+					<span translate="cmd.back"></span>
+				</button>
+				<button type="button" ng-show="isCreation" class="btn btn-primary" ng-click="add()" ng-disabled="editForm.$invalid" >
+					<span class="glyphicon glyphicon-plus"></span>
+					<span translate="cmd.create"></span>
+				</button>
+				<button type="button" ng-show="isEdition" class="btn btn-primary" ng-click="update()" ng-disabled="editForm.$invalid" >
+					<span class="glyphicon glyphicon-save"></span>
+					<span translate="cmd.update"></span>
+				</button>
+				<button type="button" ng-show="isDeletion" class="btn btn-primary" ng-click="delete()">
+					<span class="glyphicon glyphicon-trash"></span>
+					<span translate="cmd.delete"></span>
+				</button>
+				<button type="button" ng-show="canEdit" class="btn btn-primary" ng-click="gotoEdit()" ng-disabled="editForm.$invalid" >
+					<span class="glyphicon glyphicon-pencil"></span>
+					<span translate="cmd.modify"></span>
+				</button>
+				<button type="button" ng-hide="isView" class="btn btn-default" ng-click="cancel($event)">
+					<span translate="cmd.cancel"></span>
+				</button>
+				<button type="button" ng-show="canDelete" class="btn btn-primary pull-right" ng-click="gotoDelete()" ng-disabled="editForm.$invalid" >
+					<span class="glyphicon glyphicon-trash"></span>
+					<span translate="cmd.confirmDeletion"></span>
+				</button>					
+			</div>
+		</form>
+	</div>
+	<div class="col-md-1"></div>
+</div>

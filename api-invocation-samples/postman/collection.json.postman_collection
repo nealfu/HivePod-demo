@@ -1,0 +1,326 @@
+{
+    "id": "51849af0-8f2f-458c-9c3f-789c7ead7327",
+    "name": "HivePod-demo",
+    "description": "Postman's collection for HivePod-demo",
+    "order": [
+        "daca8493-655b-9393-b70c-17c12d4ab855"
+    ],
+    "folders": [
+    
+        {
+            "id": "5dac6d18-6412-4952-81d1-bd9cad012453",
+            "name": "Diagnostic",
+            "description": "Diagnostic operations.",
+            "order": [
+                
+                "dd64086b-c75f-4748-b4ee-18f29b4b602b",                
+                "51a86bbe-3204-4ab9-87c2-35f638551bc5"                
+            ],
+            "owner": 0
+        },    
+        {
+            "id": "8e5b8f5b-a06f-48dc-861f-32b43b9969e1",
+            "name": "User",
+            "description": "Collection for resource User",
+            "order": [
+                
+                "87f402b7-756c-44de-a053-04d237fff4aa",                
+                "0313881d-4005-4749-a30a-375944cb1a78",                
+                "0bf1fc84-32a5-40c3-9f39-b442f05b19d9",                
+                "ac2e22c9-8de4-4273-9c99-bfce77efb37c"                
+            ],
+            "owner": 0
+        },    
+        {
+            "id": "1a615602-7341-4a46-8c07-b46d881a34e6",
+            "name": "Place",
+            "description": "Collection for resource Place",
+            "order": [
+                
+                "d9586f05-82dd-4cfd-9bba-c3f35f445875",                
+                "0d1ab83c-52b1-49ff-81c1-890b2fdda216",                
+                "b73c3470-be1d-40a7-8a85-95fddb67bf1d",                
+                "06f326e9-810d-40c4-a87e-fbdae45cb7cb"                
+            ],
+            "owner": 0
+        }    
+    ],
+    "timestamp": 1455873975900,
+    "owner": 0,
+    "remoteLink": "",
+    "public": false,
+    "requests": [
+                
+    {
+            "id": "21a3434d-fbf2-425a-ba55-92119e4ec0f2",
+            "headers": "Authorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/swagger.json",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "GET",
+            "data": [],
+            "dataMode": "params",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1455873975900,
+            "name": "API Doc: Swagger 2.0",
+            "description": "Swagger 2.0 API Documentation",
+            "descriptionFormat": "",
+            "collectionId": "51849af0-8f2f-458c-9c3f-789c7ead7327",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "dd64086b-c75f-4748-b4ee-18f29b4b602b",
+            "headers": "",
+            "url": "http://{{host}}:{{port}}/ping",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "GET",
+            "data": [],
+            "dataMode": "params",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "normal",
+            "helperAttributes": {},
+            "time": 1455873975916,
+            "name": "Ping Service",
+            "description": "The Ping service allows to check if the service is up and running.\nIn production systems it can be used by Load Balancers to check if the current node is working.\nNo auth credentials are needed to call this service.\nA successfull response for a ping call is: `200 OK { \"msg\": \"pong\" }`",
+            "descriptionFormat": "html",
+            "collectionId": "51849af0-8f2f-458c-9c3f-789c7ead7327",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "51a86bbe-3204-4ab9-87c2-35f638551bc5",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/status",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "GET",
+            "data": [],
+            "dataMode": "params",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1455873975916,
+            "name": "Status Service",
+            "description": "The Status service provides information and versions of the running backend. This method requires authentication.",
+            "descriptionFormat": "html",
+            "collectionId": "51849af0-8f2f-458c-9c3f-789c7ead7327",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "87f402b7-756c-44de-a053-04d237fff4aa",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/users?limit=10",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "GET",
+            "data": [],
+            "dataMode": "params",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1455873975932,
+            "name": "Query User",
+            "description": "Query User. Query syntax follows the BaucisJS conventions, see: https://github.com/wprl/baucis/wiki/Query-String-Parameters",
+            "descriptionFormat": "html",
+            "collectionId": "51849af0-8f2f-458c-9c3f-789c7ead7327",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "0313881d-4005-4749-a30a-375944cb1a78",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/users",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "POST",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1455873975932,
+            "name": "Create User",
+            "description": "Creates a new User.",
+            "descriptionFormat": "html",
+            "collectionId": "51849af0-8f2f-458c-9c3f-789c7ead7327",
+            "responses": [],
+            "rawModeData": "{\n    \"name\" : \"new_Name\",\n    \"lastname\" : \"new_Lastname\",\n    \"age\" : 3,\n    \"isActive\" : true\n}"
+        },                
+    {
+            "id": "0bf1fc84-32a5-40c3-9f39-b442f05b19d9",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/users/{{id}}",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "PUT",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1455873975932,
+            "name": "Update User",
+            "description": "Updates the User with id: `{{id}}`.",
+            "descriptionFormat": "html",
+            "collectionId": "51849af0-8f2f-458c-9c3f-789c7ead7327",
+            "responses": [],
+            "rawModeData": "{\n    \"name\" : \"updated_Name\",\n    \"lastname\" : \"updated_Lastname\",\n    \"age\" : 3,\n    \"isActive\" : true\n}"
+        },                
+    {
+            "id": "ac2e22c9-8de4-4273-9c99-bfce77efb37c",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/users/{{id}}",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "DELETE",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1455873975932,
+            "name": "Delete User",
+            "description": "Deletes the User with id: `{{id}}`.",
+            "descriptionFormat": "html",
+            "collectionId": "51849af0-8f2f-458c-9c3f-789c7ead7327",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "d9586f05-82dd-4cfd-9bba-c3f35f445875",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/places?limit=10",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "GET",
+            "data": [],
+            "dataMode": "params",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1455873975947,
+            "name": "Query Place",
+            "description": "Query Place. Query syntax follows the BaucisJS conventions, see: https://github.com/wprl/baucis/wiki/Query-String-Parameters",
+            "descriptionFormat": "html",
+            "collectionId": "51849af0-8f2f-458c-9c3f-789c7ead7327",
+            "responses": [],
+            "rawModeData": ""
+        },                
+    {
+            "id": "0d1ab83c-52b1-49ff-81c1-890b2fdda216",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/places",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "POST",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1455873975947,
+            "name": "Create Place",
+            "description": "Creates a new Place.",
+            "descriptionFormat": "html",
+            "collectionId": "51849af0-8f2f-458c-9c3f-789c7ead7327",
+            "responses": [],
+            "rawModeData": "{\n    \"name\" : \"new_Name\",\n    \"description\" : \"new_Description\",\n    \"location\" : { \"type\" : \"Point\", \"coordinates\" : [139.71, 35.65] },\n    \"picture\" : null\n}"
+        },                
+    {
+            "id": "b73c3470-be1d-40a7-8a85-95fddb67bf1d",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/places/{{id}}",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "PUT",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1455873975947,
+            "name": "Update Place",
+            "description": "Updates the Place with id: `{{id}}`.",
+            "descriptionFormat": "html",
+            "collectionId": "51849af0-8f2f-458c-9c3f-789c7ead7327",
+            "responses": [],
+            "rawModeData": "{\n    \"name\" : \"updated_Name\",\n    \"description\" : \"updated_Description\",\n    \"location\" : { \"type\" : \"Point\", \"coordinates\" : [139.71, 35.65] },\n    \"picture\" : null\n}"
+        },                
+    {
+            "id": "06f326e9-810d-40c4-a87e-fbdae45cb7cb",
+            "headers": "Accept: application/json\nContent-Type: application/json\nAuthorization: Basic aWNpbmV0aWM6YWRtaW4=\n",
+            "url": "http://{{host}}:{{port}}/api/places/{{id}}",
+            "preRequestScript": "",
+            "pathVariables": {},
+            "method": "DELETE",
+            "data": [],
+            "dataMode": "raw",
+            "version": 2,
+            "tests": "",
+            "currentHelper": "basicAuth",
+            "helperAttributes": {
+				"username": "{{user}}",
+				"password": "{{pass}}",
+				"saveToRequest": true
+			},
+            "time": 1455873975947,
+            "name": "Delete Place",
+            "description": "Deletes the Place with id: `{{id}}`.",
+            "descriptionFormat": "html",
+            "collectionId": "51849af0-8f2f-458c-9c3f-789c7ead7327",
+            "responses": [],
+            "rawModeData": ""
+        }                 
+    ]    
+}
